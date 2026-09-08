@@ -1,0 +1,49 @@
+================================================================================
+    MPLADS REPORT 02: WORK RECOMMENDATIONS & SANCTIONS DATA SPECIFICATION
+================================================================================
+Generated for: MPLADS Project Showcase & Data Analytics
+Source Reference: Ministry of Statistics and Programme Implementation (MoSPI) / eSAKSHI Portal
+
+1. WORK PROPOSAL & APPROVAL TIMELINES (STATUTORY RULES)
+--------------------------------------------------------------------------------
+- Recommendation Mode: Digital entry by MP via eSAKSHI Web Portal or Mobile App.
+- Sanctioning Window : 45 Days maximum for District Authority (Collector/DM) 
+  to approve or reject after feasibility assessment (Para 3.2.4 Guidelines).
+- Execution Window   : Completion limit generally <= 1 Year from sanction date.
+- Post-Tenure Rule   : All sanctioned works must complete within 18 months of MP demitting office.
+
+2. KEY DATA FIELDS & ATTRIBUTES
+--------------------------------------------------------------------------------
+Field Name            | Data Type    | Description
+--------------------------------------------------------------------------------
+Work_ID               | VARCHAR(25)  | Unique Work Identifier (e.g., 'WRK-2025-UP-00892')
+MP_ID                 | VARCHAR(20)  | Recommending Member of Parliament ID
+Sector_Category       | VARCHAR(50)  | Drinking Water, Sanitation, Roads, Health, Education
+Work_Title            | TEXT         | Complete description of recommended work
+Proposed_Cost_INR     | DECIMAL(12,2)| Recommended budget by MP
+Sanctioned_Cost_INR   | DECIMAL(12,2)| Approved budget by District Collector
+Recommendation_Date   | DATE         | Date proposed on eSAKSHI portal
+Sanction_Date         | DATE         | Date Sanction Order issued by Collector
+Sanction_Order_No     | VARCHAR(50)  | Official District Collectorate Reference No
+District_Authority    | VARCHAR(100) | Name of Nodal District Collectorate
+Implementing_Agency   | VARCHAR(100) | Assigned agency (e.g., CPWD, State PWD, RES)
+Quota_Category        | VARCHAR(20)  | 'General', 'SC Area (15%)', 'ST Area (7.5%)'
+Sanction_Status       | VARCHAR(30)  | 'Recommended', 'Sanctioned', 'Rejected', 'In-Review'
+Rejection_Reason      | TEXT         | Reason if rejected (e.g., land unclarity, non-permissible)
+
+3. MOCK DATA SAMPLE (TABULAR FORMAT)
+--------------------------------------------------------------------------------
+Work_ID          | Sector     | Proposed Cost | Sanctioned Cost | Recom. Date | Sanc. Date | Quota | Status     | Executing Agency
+WRK-2025-UP-0012 | Water      | Rs 12,50,000  | Rs 12,00,000    | 2025-04-10  | 2025-05-02 | SC    | Sanctioned | UP Jal Nigam
+WRK-2025-UP-0015 | Education  | Rs 25,00,000  | Rs 25,00,000    | 2025-05-18  | 2025-06-12 | Gen   | Sanctioned | PWD Building Div
+WRK-2025-TN-0088 | Sanitation | Rs  8,00,000  | Rs  8,00,000    | 2025-06-01  | 2025-06-25 | ST    | Sanctioned | Rural Dev Dept
+WRK-2025-MH-0104 | Roads      | Rs 30,00,000  | Rs  0           | 2025-07-10  | 2025-08-01 | Gen   | Rejected   | N/A (Private Land)
+
+4. SECTORAL ELIGIBILITY CRITERIA
+--------------------------------------------------------------------------------
+- Permissible Works : Durable public infrastructure (schools, community halls, 
+                      solar lights, piped drinking water, public health clinics).
+- Non-Permissible   : Private property, recurring staff salaries, land acquisition, 
+                      commercial ventures, maintenance/repair of existing buildings.
+
+================================================================================
