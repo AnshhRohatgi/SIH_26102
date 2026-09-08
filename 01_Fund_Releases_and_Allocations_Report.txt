@@ -1,0 +1,49 @@
+================================================================================
+          MPLADS REPORT 01: FUND RELEASES & ALLOCATION DATA SPECIFICATION
+================================================================================
+Generated for: MPLADS Project Showcase & Data Analytics
+Source Reference: Ministry of Statistics and Programme Implementation (MoSPI) / eSAKSHI Portal
+
+1. OVERVIEW & FUND FLOW FRAMEWORK
+--------------------------------------------------------------------------------
+Under the Members of Parliament Local Area Development Scheme (MPLADS), each MP 
+is entitled to recommend works up to Rs. 5 Crore per annum. Following the 
+eSAKSHI revised fund-flow procedure (effective April 1, 2023):
+- Entitlements are released in online authorisations via Central Nodal Agency (CNA).
+- Funds are non-lapsable; unspent balances roll over to subsequent fiscal years.
+- Funds are maintained through digital authorizations directly integrated with 
+  PFMS (Public Financial Management System).
+
+2. KEY DATA FIELDS & ENTITY ATTRIBUTES
+--------------------------------------------------------------------------------
+Field Name             | Data Type    | Description / Constraints
+--------------------------------------------------------------------------------
+Financial_Year         | VARCHAR(7)   | e.g., '2025-26', '2026-27'
+MP_ID                  | VARCHAR(20)  | Unique MP ID code (e.g., 'MP-LS-17-104')
+MP_Name                | VARCHAR(100) | Full Name of the Member of Parliament
+House_Type             | VARCHAR(20)  | 'Lok Sabha' or 'Rajya Sabha'
+Constituency_State     | VARCHAR(50)  | Constituency Name (LS) or Elected State (RS)
+Annual_Entitlement_INR | DECIMAL(12,2)| Base entitlement (Rs 5,00,00,000.00)
+Released_Amount_GoI    | DECIMAL(12,2)| Actual amount released by GoI via CNA
+Interest_Accrued_INR   | DECIMAL(12,2)| Interest generated in bank/nodal accounts
+Unspent_Balance_Bfwd   | DECIMAL(12,2)| Unspent balance carried forward from previous FY
+Total_Available_Funds  | DECIMAL(12,2)| Formula: Released + Interest + Unspent_Bfwd
+Authorization_Date     | DATE         | Date of CNA release authorization
+Status                 | VARCHAR(30)  | 'Active', 'Sanctioned', 'Capped'
+
+3. MOCK DATA SAMPLE (TABULAR FORMAT)
+--------------------------------------------------------------------------------
+FY      | MP_ID       | MP_Name             | House     | State/Constituency | Entitlement (INR) | Released (INR) | Interest (INR) | Unspent Bfwd (INR)
+2025-26 | MP-LS-18-01 | Rajesh Kumar Sharma | Lok Sabha | Varanasi (UP)      | 50,00,0000.00     | 50,00,0000.00   | 1,45,200.00    | 22,10,000.00
+2025-26 | MP-RS-22-14 | Dr. Sunita Verma    | RS        | Maharashtra        | 50,00,0000.00     | 25,00,0000.00   | 88,400.00      | 5,50,000.00
+2025-26 | MP-LS-18-42 | A. R. Muthusamy     | Lok Sabha | Madurai (TN)       | 50,00,0000.00     | 50,00,0000.00   | 2,10,000.00    | 41,00,000.00
+2026-27 | MP-LS-18-01 | Rajesh Kumar Sharma | Lok Sabha | Varanasi (UP)      | 50,00,0000.00     | 25,00,0000.00   | 45,000.00      | 18,30,000.00
+
+4. COMPLIANCE & ALLOCATION RULES
+--------------------------------------------------------------------------------
+- Scheduled Caste (SC) Earmarking : Minimum 15.0% of total annual entitlement
+- Scheduled Tribe (ST) Earmarking : Minimum 7.5% of total annual entitlement
+- Trust/Society Cap             : Maximum Rs 75 Lakh per asset for eligible trusts
+- Non-Lapsable Account Rule    : All authorizations carry over across fiscal years
+
+================================================================================
